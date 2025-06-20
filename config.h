@@ -60,6 +60,13 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
+// Kinda annooying work around for this... something that kinda works
+void
+sendmonkey(const Arg *arg) {
+    if (selmon->sel)
+        sendmon(selmon->sel, dirtomon(arg->i));
+}
+
 
 // This is quite boring setting all of this up... but your welcome - Jake
 #include "movestack.c"
@@ -86,8 +93,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask, XK_Right, movestack, {.i = +1 } },
 	{ MODKEY, XK_period, focusmon, {.i = +1 } }, // Mod + .
 	{ MODKEY, XK_comma,  focusmon, {.i = -1 } }, // Mod + ,
-	{ MODKEY|ShiftMask, XK_period, sendmon, {.i = +1 } },
-	{ MODKEY|ShiftMask, XK_comma,  sendmon, {.i = -1 } },
+	{ MODKEY|ShiftMask, XK_period, sendmonkey, {.i = +1 } },
+	{ MODKEY|ShiftMask, XK_comma,  sendmonkey, {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
