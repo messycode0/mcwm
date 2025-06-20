@@ -18,6 +18,13 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+/* gaps - inner/outer/horizontal/vertical + smartgaps */
+int gappih    = 18;  // inner horizontal
+int gappiv    = 18;  // inner vertical
+int gappoh    = 18;  // outer horizontal
+int gappov    = 18;  // outer vertical
+int smartgaps = 0;   // 1 = remove outer gaps when 1 window
+
 /* tagging */
 static const char *tags[] = { "Main", "2", "3", "4", "5", "6", "7", "8", "9" };
 
