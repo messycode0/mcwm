@@ -1,33 +1,35 @@
 mcwm - Messy Code Window Manager
--------------
+--------------------------------
 
-A lightweight, fun window manager. Made for X
+A lightweight DWM fork. Made for X.
 
 Requirements
--------------
-In order to build dwm you need the Xlib header files.
+------------
+
+To build mcwm, you need Xlib header files installed.
 
 Installation
--------------
+------------
 
-in your shell
+In your shell:
 
-$ git clone https://github.com/messycode0/mcwm.git
+    git clone https://github.com/messycode0/mcwm.git
+    cd mcwm
+    make
+    sudo make install
 
-enter into it
+To start mcwm, edit (or create) your ~/.xinitrc and add:
 
-$ make 
-then
-$ sudo make install
+    exec mcwm
 
-in your ~/.xinitrc (make it if missing) 
-put in 
-
-exec mcwm
+Then run `startx` to launch.
 
 Configuration
 -------------
-The configuration of dwm is done by creating a custom config.h
-and (re)compiling the source code.
 
-No Config.yaml files or whatever... you edit the source code. like a boss. 
+The configuration of mcwm is done by editing the source code.
+
+There are no Config.yaml files or bloated GUIs —
+you make your changes in `config.h` and recompile like a boss.
+
+Because real power users edit C.
