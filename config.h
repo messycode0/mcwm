@@ -98,8 +98,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask, XK_Down,  movestack, {.i = +1 } },
 	{ MODKEY|ShiftMask, XK_Left,  movestack, {.i = -1 } },
 	{ MODKEY|ShiftMask, XK_Right, movestack, {.i = +1 } },
-	{ MODKEY, XK_period, focusmon, {.i = +1 } }, // Mod + .
-	{ MODKEY, XK_comma,  focusmon, {.i = -1 } }, // Mod + ,
+	{ MODKEY, XK_period, focusmon, {.i = -1 } }, // Mod + .
+	{ MODKEY, XK_comma,  focusmon, {.i = +1 } }, // Mod + ,
 	{ MODKEY|ShiftMask, XK_period, sendmonkey, {.i = +1 } },
 	{ MODKEY|ShiftMask, XK_comma,  sendmonkey, {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },

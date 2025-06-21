@@ -741,13 +741,22 @@ drawbar(Monitor *m)
 
 	if (!m->showbar)
 		return;
-
-	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) { /* status is only drawn on selected monitor */
-		drw_setscheme(drw, scheme[SchemeNorm]);
-		tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
-		drw_text(drw, m->ww - tw, 0, tw, bh, 0, stext, 0);
+	
+	char fullstatus[256];
+	snprintf(fullstatus, sizeof(fullstatus), "%s  |  MCWM 0.1.2-6.2", stext ? stext : "");
+	
+	tw = TEXTW(fullstatus) + 2;
+	
+	if (m == selmon) {
+	    // selected monitor → draw status
+	    drw_setscheme(drw, scheme[SchemeNorm]);
+	    drw_text(drw, m->ww - tw, 0, tw, bh, lrpad / 2, fullstatus, 0);
+	} else {
+	    // non-selected monitor → just clear the area
+	    drw_setscheme(drw, scheme[SchemeNorm]);
+	    drw_rect(drw, m->ww - tw, 0, tw, bh, 1, 1); // filled box to wipe stale text
 	}
+
 
 	for (c = m->clients; c; c = c->next) {
 		occ |= c->tags;
