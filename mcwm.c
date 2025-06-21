@@ -743,7 +743,7 @@ drawbar(Monitor *m)
 		return;
 	
 	char fullstatus[256];
-	snprintf(fullstatus, sizeof(fullstatus), "%s  |  MCWM 0.1.2-6.2", stext ? stext : "");
+	snprintf(fullstatus, sizeof(fullstatus), "%s  |  MCWM-"VERSION, stext ? stext : "");
 	
 	tw = TEXTW(fullstatus) + 2;
 	
