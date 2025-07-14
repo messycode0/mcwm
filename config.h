@@ -48,7 +48,7 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "TILING",      tile },    /* first entry is default */
 	{ "FLOATING",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "ONTOP M",      monocle },
 };
 
 /* key definitions */
@@ -66,6 +66,11 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
+
+static const char *shot_rect[] = { "/home/jacob/scripts/ss.sh", "rect", NULL };
+static const char *shot_full[] = { "/home/jacob/scripts/ss.sh", "full", NULL };
+static const char *shot_view[] = { "/home/jacob/scripts/ss.sh", "view", NULL };
+
 
 // Kinda annooying work around for this... something that kinda works
 void
@@ -90,6 +95,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = shot_rect } },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = shot_full } },
+	{ MODKEY,                       XK_i,      spawn,          {.v = shot_view } },
 	{ MODKEY, XK_Up,    focusstack, {.i = -1 } },
 	{ MODKEY, XK_Down,  focusstack, {.i = +1 } },
 	{ MODKEY, XK_Left,  focusstack, {.i = -1 } },
